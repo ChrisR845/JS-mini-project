@@ -1,111 +1,82 @@
-const formatCurrency = (value) =>
-    new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    }).format(value);
+// Tip calculator
+const subtotal = document.getElementById("subtotal");
+const tipPercent = document.getElementById("tipPercent");
+const tipAmount = document.getElementById("tipAmount");
+const totalAmount = document.getElementById("totalAmount");
+const tipBtn = document.getElementById("tipBtn");
 
-const subtotalInput = document.getElementById('subtotal');
-const tipPercentInput = document.getElementById('tipPercent');
-const tipAmount = document.getElementById('tipAmount');
-const totalAmount = document.getElementById('totalAmount');
+function calculateTip() {
+    const subtotalValue = Number(subtotal.value);
+    const tipValue = Number(tipPercent.value);
+    const tip = subtotalValue * (tipValue / 100);
+    const total = subtotalValue + tip;
 
-function updateTip() {
-    const subtotal = Number(subtotalInput.value) || 0;
-    const tipPercent = Number(tipPercentInput.value) || 0;
-    const tip = subtotal * (tipPercent / 100);
-    const total = subtotal + tip;
-
-    tipAmount.textContent = formatCurrency(tip);
-    totalAmount.textContent = formatCurrency(total);
+    tipAmount.textContent = "$" + tip;
+    totalAmount.textContent = "$" + total;
 }
 
-subtotalInput.addEventListener('input', updateTip);
-tipPercentInput.addEventListener('input', updateTip);
-updateTip();
+tipBtn.addEventListener("click", calculateTip);
+subtotal.addEventListener("input", calculateTip);
+tipPercent.addEventListener("input", calculateTip);
+calculateTip();
 
-const hourlyRateInput = document.getElementById('hourlyRate');
-const hoursWorkedInput = document.getElementById('hoursWorked');
-const taxRateInput = document.getElementById('taxRate');
-const grossPay = document.getElementById('grossPay');
-const taxesPay = document.getElementById('taxesPay');
-const netPay = document.getElementById('netPay');
-const paycheckBtn = document.getElementById('paycheckBtn');
+// Paycheck calculator
+const hoursWorked = document.getElementById("hoursWorked");
+const hourlyRate = document.getElementById("hourlyRate");
+const paycheckAmount = document.getElementById("paycheckAmount");
+const paycheckBtn = document.getElementById("paycheckBtn");
 
 function calculatePaycheck() {
-    const hourlyRate = Number(hourlyRateInput.value) || 0;
-    const hoursWorked = Number(hoursWorkedInput.value) || 0;
-    const taxRate = Number(taxRateInput.value) || 0;
+    const hours = Number(hoursWorked.value);
+    const rate = Number(hourlyRate.value);
+    const paycheck = hours * rate;
 
-    const gross = hourlyRate * hoursWorked;
-    const taxes = gross * (taxRate / 100);
-    const takeHome = gross - taxes;
-
-    grossPay.textContent = formatCurrency(gross);
-    taxesPay.textContent = formatCurrency(taxes);
-    netPay.textContent = formatCurrency(takeHome);
+    paycheckAmount.textContent = "$" + paycheck;
 }
 
-paycheckBtn.addEventListener('click', calculatePaycheck);
-[hourlyRateInput, hoursWorkedInput, taxRateInput].forEach((input) => {
-    input.addEventListener('input', calculatePaycheck);
-});
+paycheckBtn.addEventListener("click", calculatePaycheck);
+hoursWorked.addEventListener("input", calculatePaycheck);
+hourlyRate.addEventListener("input", calculatePaycheck);
 calculatePaycheck();
 
-const homeworkScoreInput = document.getElementById('homeworkScore');
-const testScoreInput = document.getElementById('testScore');
-const finalExamScoreInput = document.getElementById('finalExamScore');
-const finalGrade = document.getElementById('finalGrade');
-const letterGrade = document.getElementById('letterGrade');
-const gradeBtn = document.getElementById('gradeBtn');
+// Grade calculator
+const gradeCalculator = document.getElementById("gradeCalculator");
+const totalPoints = document.getElementById("totalPoints");
+const yourGrade = document.getElementById("yourGrade");
+const gradeBtn = document.getElementById("gradeBtn");
 
 function calculateGrade() {
-    const homework = Number(homeworkScoreInput.value) || 0;
-    const testScore = Number(testScoreInput.value) || 0;
-    const finalExamScore = Number(finalExamScoreInput.value) || 0;
+    const pointsEarned = Number(gradeCalculator.value);
+    const pointsPossible = Number(totalPoints.value);
+    let grade = 0;
 
-    const weightedAverage = (homework * 0.3) + (testScore * 0.3) + (finalExamScore * 0.4);
-    finalGrade.textContent = `${weightedAverage.toFixed(1)}%`;
-
-    if (weightedAverage >= 90) {
-        letterGrade.textContent = 'A';
-    } else if (weightedAverage >= 80) {
-        letterGrade.textContent = 'B';
-    } else if (weightedAverage >= 70) {
-        letterGrade.textContent = 'C';
-    } else if (weightedAverage >= 60) {
-        letterGrade.textContent = 'D';
-    } else {
-        letterGrade.textContent = 'F';
+    if (pointsPossible > 0) {
+        grade = (pointsEarned / pointsPossible) * 100;
     }
+
+    yourGrade.textContent = grade + "%";
 }
 
-gradeBtn.addEventListener('click', calculateGrade);
-[homeworkScoreInput, testScoreInput, finalExamScoreInput].forEach((input) => {
-    input.addEventListener('input', calculateGrade);
-});
+gradeBtn.addEventListener("click", calculateGrade);
+gradeCalculator.addEventListener("input", calculateGrade);
+totalPoints.addEventListener("input", calculateGrade);
 calculateGrade();
 
-const distanceMilesInput = document.getElementById('distanceMiles');
-const fuelEconomyInput = document.getElementById('fuelEconomy');
-const gasPriceInput = document.getElementById('gasPrice');
-const fuelNeeded = document.getElementById('fuelNeeded');
-const tripCost = document.getElementById('tripCost');
-const gasBtn = document.getElementById('gasBtn');
+// Gas cost calculator
+const tankSize = document.getElementById("tankSize");
+const gasPrice = document.getElementById("gasPrice");
+const costFill = document.getElementById("costFill");
+const gasBtn = document.getElementById("gasBtn");
 
 function calculateGasCost() {
-    const distance = Number(distanceMilesInput.value) || 0;
-    const mpg = Number(fuelEconomyInput.value) || 0;
-    const price = Number(gasPriceInput.value) || 0;
+    const gallons = Number(tankSize.value);
+    const pricePerGallon = Number(gasPrice.value);
+    const totalCost = gallons * pricePerGallon;
 
-    const gallonsNeeded = (distance / mpg) || 0;
-    const totalGasCost = gallonsNeeded * price;
-
-    fuelNeeded.textContent = `${gallonsNeeded.toFixed(2)} gal`;
-    tripCost.textContent = formatCurrency(totalGasCost);
+    costFill.textContent = "$" + totalCost;
 }
 
-gasBtn.addEventListener('click', calculateGasCost);
-[distanceMilesInput, fuelEconomyInput, gasPriceInput].forEach((input) => {
-    input.addEventListener('input', calculateGasCost);
-});
+gasBtn.addEventListener("click", calculateGasCost);
+tankSize.addEventListener("input", calculateGasCost);
+gasPrice.addEventListener("input", calculateGasCost);
 calculateGasCost();

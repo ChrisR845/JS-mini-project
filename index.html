@@ -40,15 +40,15 @@
             </div>
             <div class="card-body">
                 <div class="mb-3">
-                    <label for="hourlyRate" class="form-label">Hourly Worked</label>
-                    <input type="number" class="form-control" id="hourlyRate" placeholder="40">
+                    <label for="hoursWorked" class="form-label">Hours Worked</label>
+                    <input type="number" class="form-control" id="hoursWorked" placeholder="40">
                 </div>
                 <div class="mb-3">
-                    <label for="taxRate" class="form-label">Hourly Rate %</label>
-                    <input type="number" class="form-control" id="taxRate" placeholder="15.92">
+                    <label for="hourlyRate" class="form-label">Hourly Rate %</label>
+                    <input type="number" class="form-control" id="hourlyRate" placeholder="15.92">
                 </div>
                 <div class="result-box">
-                    <p>Paycheck Amount: <span id="grossPay">$0.00</span></p>
+                    <p>Paycheck Amount: <span id="paycheckAmount">$0.00</span></p>
                 </div>
                 <button class="btn btn-primary mt-3" id="paycheckBtn">Calculate Paycheck</button>
             </div>
@@ -61,15 +61,15 @@
             </div>
             <div class="card-body">
                 <div class="mb-3">
-                    <label for="testScore" class="form-label">Points Earned</label>
-                    <input type="number" class="form-control" id="testScore" placeholder="50">
+                    <label for="gradeCalculator" class="form-label">Points Earned</label>
+                    <input type="number" class="form-control" id="gradeCalculator" placeholder="50">
                 </div>
                 <div class="mb-3">
-                    <label for="finalExamScore" class="form-label">Total Points</label>
-                    <input type="number" class="form-control" id="finalExamScore" placeholder="100">
+                    <label for="totalPoints" class="form-label">Total Points</label>
+                    <input type="number" class="form-control" id="totalPoints" placeholder="100">
                 </div>
                 <div class="result-box">
-                    <p>Your Grade: <span id="finalGrade">0%</span></p>
+                    <p>Your Grade: <span id="yourGrade">0%</span></p>
                 </div>
                 <button class="btn btn-primary mt-3" id="gradeBtn">Calculate Grade</button>
             </div>
@@ -82,15 +82,15 @@
             </div>
             <div class="card-body">
                 <div class="mb-3">
-                    <label for="fuelEconomy" class="form-label">Tank Size (gallons)</label>
-                    <input type="number" class="form-control" id="fuelEconomy" placeholder="15.3">
+                    <label for="tankSize" class="form-label">Tank Size (gallons)</label>
+                    <input type="number" class="form-control" id="tankSize" placeholder="15.3">
                 </div>
                 <div class="mb-3">
                     <label for="gasPrice" class="form-label">Price Per Gallon ($)</label>
                     <input type="number" class="form-control" id="gasPrice" placeholder="4.20">
                 </div>
                 <div class="result-box">
-                    <p>Cost to Fill up: <span id="fuelNeeded">0.00</span></p>
+                    <p>Cost to Fill up: <span id="costFill">0.00</span></p>
                 </div>
                 <button class="btn btn-primary mt-3" id="gasBtn">Calculate Gas Cost</button>
             </div>
