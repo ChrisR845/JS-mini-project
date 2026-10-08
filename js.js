@@ -1,4 +1,6 @@
-// Tip calculator
+// Tip 
+document.getElementById('tipBtn').addEventListener('click', calculateTip);
+
 const subtotal = document.getElementById("subtotal");
 const tipPercent = document.getElementById("tipPercent");
 const tipAmount = document.getElementById("tipAmount");
@@ -16,11 +18,9 @@ function calculateTip() {
 }
 
 tipBtn.addEventListener("click", calculateTip);
-subtotal.addEventListener("input", calculateTip);
-tipPercent.addEventListener("input", calculateTip);
 calculateTip();
 
-// Paycheck calculator
+// Paycheck 
 const hoursWorked = document.getElementById("hoursWorked");
 const hourlyRate = document.getElementById("hourlyRate");
 const paycheckAmount = document.getElementById("paycheckAmount");
@@ -35,11 +35,9 @@ function calculatePaycheck() {
 }
 
 paycheckBtn.addEventListener("click", calculatePaycheck);
-hoursWorked.addEventListener("input", calculatePaycheck);
-hourlyRate.addEventListener("input", calculatePaycheck);
 calculatePaycheck();
 
-// Grade calculator
+// Grade
 const gradeCalculator = document.getElementById("gradeCalculator");
 const totalPoints = document.getElementById("totalPoints");
 const yourGrade = document.getElementById("yourGrade");
@@ -58,11 +56,9 @@ function calculateGrade() {
 }
 
 gradeBtn.addEventListener("click", calculateGrade);
-gradeCalculator.addEventListener("input", calculateGrade);
-totalPoints.addEventListener("input", calculateGrade);
 calculateGrade();
 
-// Gas cost calculator
+// Gas 
 const tankSize = document.getElementById("tankSize");
 const gasPrice = document.getElementById("gasPrice");
 const costFill = document.getElementById("costFill");
@@ -77,6 +73,4 @@ function calculateGasCost() {
 }
 
 gasBtn.addEventListener("click", calculateGasCost);
-tankSize.addEventListener("input", calculateGasCost);
-gasPrice.addEventListener("input", calculateGasCost);
 calculateGasCost();
